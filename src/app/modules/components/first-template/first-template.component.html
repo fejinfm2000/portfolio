@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="profile-container">
+        <div class="profile-picture-sec">
+            <img class="profile-image"
+                [src]="'assets/images/' +( currentUser?.profile?.profileName ? currentUser?.profile?.profileName+'.jpg' : 'defaultProfile.webp')"
+                alt="">
+            <div class="location">
+                <p><i class="fas fa-map-marker-alt icon-img"></i>
+                    location</p>
+            </div>
+        </div>
+        <div class="profile-content-sec">
+            <!-- heading -->
+            <div class="content-title-sec">
+                <p class="content-title">{{currentUser?.profile?.name}}</p>
+            </div>
+            <!-- icon -->
+            <div class="icon-con">
+                <span class="icon-sec"><a href="https://www.google.co.in/" target="_blank">
+                        <i class="fas fa-globe icon-img"></i>
+                    </a>
+                </span>
+                <span class="icon-sec"><a href="https://twitter.com/" target="_blank">
+                        <i class="fab fa-twitter icon-img"></i>
+                    </a>
+                </span>
+                <span class="icon-sec"><a href="https://instagram.com/" target="_blank">
+                        <i class="fab fa-instagram icon-img"></i>
+                    </a>
+                </span>
+                <span class="icon-sec"><a href="mailto:example@email.com" target="_blank">
+                        <i class="fas fa-envelope icon-img"></i>
+                    </a>
+                </span>
+                <span class="icon-sec"><a href="https://www.example.com" target="_blank">
+                        <i class="fas fa-share-alt icon-img"></i>
+                    </a>
+                </span>
+            </div>
+            <!-- role -->
+            <div class="role-sec">
+                <div>
+                    <p class="role-title">Role</p>
+                    <p class="role-sub-title">{{currentUser?.profile?.role}}</p>
+                </div>
+                <div>
+                    <p class="role-title">Experience</p>
+                    <p class="role-sub-title">{{currentUser?.profile?.experience}}</p>
+                </div>
+            </div>
+            <!-- SuperPower -->
+            <div class="super-power" *ngIf="currentUser?.skills">
+                <div class="power-title">
+                    <p>SuperPower Skills</p>
+                </div>
+                <div class="power-skills">
+                    <div *ngFor="let skill of currentUser?.skills" class="profile-super-content">
+                        <span><i class="fas fa-star"></i>
+                            {{skill}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="profile-tab-container">
+        <mat-tab-group>
+            <mat-tab label="My Story">
+
+            </mat-tab>
+            <mat-tab label="Skills">
+
+            </mat-tab>
+            <mat-tab label="Projects">
+
+            </mat-tab>
+            <mat-tab label="Experience">
+
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>
