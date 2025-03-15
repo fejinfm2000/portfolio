@@ -5,6 +5,7 @@ export const routes: Routes = [
     {
         path: 'portfolio/:username',
         component: PortfolioComponent,
+        data: { prerender: false }
     },
     {
         path: '**',
