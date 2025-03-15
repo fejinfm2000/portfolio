@@ -14,6 +14,16 @@
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
+        "prerender": {
+          "builder": "@angular/platform-server:prerender",
+          "options": {
+            "routes": [
+              "/",
+              "/portfolio/name",
+              "/portfolio/buddy"
+            ]
+          }
+        },
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
