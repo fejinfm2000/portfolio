@@ -1,9 +1,8 @@
 <div class="container">
     <div class="profile-container">
         <div class="profile-picture-sec">
-            <img class="profile-image"
-                [src]="'assets/images/' +( currentUser?.profile?.profileName ? currentUser?.profile?.profileName+'.jpg' : 'defaultProfile.webp')"
-                alt="">
+            <img class="profile-image" [src]="'assets/images/' + currentUser?.profile?.profileName + '.jpg'"
+                (error)="onImageError($event)" alt="Profile Image">
             <div class="location">
                 <p><i class="fas fa-map-marker-alt icon-img"></i></p>
                 @if (currentUser?.profile?.location?.name) {

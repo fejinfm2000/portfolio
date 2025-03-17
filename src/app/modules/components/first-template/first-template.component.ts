@@ -24,5 +24,8 @@ export class FirstTemplateComponent implements OnInit {
       }
     })
   }
+  onImageError(event: any) {
+    event.target.src = 'assets/images/defaultProfile.webp';
+  }
 
 }
