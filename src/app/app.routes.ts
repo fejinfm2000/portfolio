@@ -3,12 +3,12 @@ import { PortfolioComponent } from './modules/portfolio/portfolio.component';
 
 export const routes: Routes = [
     {
-        path: 'portfolio/:username',
+        path: 'portfolio/:username/:templateName',
         component: PortfolioComponent,
         data: { prerender: false }
     },
     {
         path: '**',
-        redirectTo: 'portfolio/buddy'
+        redirectTo: 'portfolio/buddy/first'
     }
 ];

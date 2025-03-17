@@ -8,6 +8,10 @@
         <!-- <button type="button" mat-button (click)="drawer.toggle()">
             Toggle sidenav
         </button> -->
+        @if (templateName=="first") {
         <app-first-template></app-first-template>
+        }@else {
+        <app-second-template></app-second-template>
+        }
     </div>
 </mat-drawer-container>
