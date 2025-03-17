@@ -17,7 +17,7 @@ import { Subject, takeUntil } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
   title = 'portfolio';
   username: string = '';
-  templateName: string = '';
+  templateName: string = 'first';
   users!: Users;
   currentUser!: IUserData;
   unSubscribe$ = new Subject();
