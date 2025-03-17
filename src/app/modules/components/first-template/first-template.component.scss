@@ -42,6 +42,20 @@ p {
     font-family: auto;
 }
 
+.default-content-title {
+    font-size: 50px;
+    margin: 0rem;
+    display: flex;
+    flex-direction: row;
+    font-family: auto;
+    color: rgb(181, 179, 179);
+    align-items: end;
+}
+
+.icon-disable {
+    pointer-events: none;
+}
+
 .profile-content-sec {
     display: flex;
     flex-direction: column;
@@ -54,6 +68,7 @@ p {
 
 .location {
     margin: 1rem;
+    display: flex;
 }
 
 .role-sec {
@@ -68,6 +83,12 @@ p {
 .role-title {
     font-size: small;
     margin: 0rem;
+}
+
+.default-title {
+    font-size: small;
+    margin: 0rem;
+    color: rgb(181, 179, 179);
 }
 
 .role-sub-title {
@@ -102,6 +123,7 @@ p {
     gap: 1rem;
     width: 100%;
     justify-content: flex-start;
+    flex-wrap: wrap;
 }
 
 .power-title {
@@ -112,6 +134,11 @@ p {
 
 }
 
+.location-name {
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
 ::ng-deep .mat-mdc-tab .mdc-tab-indicator__content--underline {
     border-color: #00CCFF !important;
 }
@@ -120,6 +147,93 @@ p {
     display: flex;
     flex-direction: row;
     width: 100%;
+}
+
+.story {
+    padding: 1rem;
+}
+
+.projects-container {
+    margin: 0 auto;
+    text-align: left;
+
+    h2 {
+        color: #333;
+        margin-bottom: 15px;
+        font-size: 24px;
+    }
+
+    .project-card {
+        background: #f9f9f9;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+        text-align: left;
+
+        h3 {
+            color: #222;
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: #555;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 5px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.experience-container {
+    margin: 0 auto;
+
+    h2 {
+        color: #333;
+        margin-bottom: 15px;
+        font-size: 24px;
+    }
+
+    .experience-card {
+        background: #f9f9f9;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+        text-align: left;
+
+        h3 {
+            color: #222;
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: #555;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+    }
+}
+
+.mat-tab {
+    min-height: 50vh;
+    background: #f9f9f9;
+}
+
+.default-content {
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media (min-width: 768px) {
@@ -155,6 +269,15 @@ p {
         margin: 0rem;
         display: flex;
         flex-direction: column;
+    }
+
+    .default-content-title {
+        font-size: 35px;
+        margin: 0rem;
+        display: flex;
+        flex-direction: row;
+        color: rgb(181, 179, 179);
+        align-items: end;
     }
 
     .icon-con {

@@ -5,34 +5,49 @@
                 [src]="'assets/images/' +( currentUser?.profile?.profileName ? currentUser?.profile?.profileName+'.jpg' : 'defaultProfile.webp')"
                 alt="">
             <div class="location">
-                <p><i class="fas fa-map-marker-alt icon-img"></i>
-                    location</p>
+                <p><i class="fas fa-map-marker-alt icon-img"></i></p>
+                @if (currentUser?.profile?.location?.name) {
+                <a class="location-name" target="_blank"
+                    [href]="currentUser?.profile?.location?.mapLink">{{currentUser?.profile?.location?.name ||
+                    "Location"}}</a>
+                }@else{
+                <p class="default-title , location-name">Add Your Location</p>
+                }
             </div>
         </div>
         <div class="profile-content-sec">
             <!-- heading -->
             <div class="content-title-sec">
+                @if (currentUser?.profile?.name) {
                 <p class="content-title">{{currentUser?.profile?.name}}</p>
+                }@else {
+                <p class="default-content-title">Buddy <sup class="default-title">Add Your Name..</sup> </p>
+                }
             </div>
             <!-- icon -->
             <div class="icon-con">
-                <span class="icon-sec"><a href="https://www.google.co.in/" target="_blank">
+                <span [ngClass]="currentUser?.profile?.social_links?.globe ? 'icon-sec ': 'icon-disable'"><a
+                        [href]="currentUser?.profile?.social_links?.globe" target="_blank">
                         <i class="fas fa-globe icon-img"></i>
                     </a>
                 </span>
-                <span class="icon-sec"><a href="https://twitter.com/" target="_blank">
+                <span [ngClass]="currentUser?.profile?.social_links?.twitter ? 'icon-sec' : 'icon-disable'"><a
+                        [href]="currentUser?.profile?.social_links?.twitter" target="_blank">
                         <i class="fab fa-twitter icon-img"></i>
                     </a>
                 </span>
-                <span class="icon-sec"><a href="https://instagram.com/" target="_blank">
+                <span [ngClass]="currentUser?.profile?.social_links?.instagram ? 'icon-sec ': 'icon-disable'"><a
+                        [href]="currentUser?.profile?.social_links?.instagram" target="_blank">
                         <i class="fab fa-instagram icon-img"></i>
                     </a>
                 </span>
-                <span class="icon-sec"><a href="mailto:example@email.com" target="_blank">
+                <span [ngClass]="currentUser?.profile?.social_links?.envelope ? 'icon-sec ': 'icon-disable'"><a
+                        [href]="currentUser?.profile?.social_links?.envelope" target="_blank">
                         <i class="fas fa-envelope icon-img"></i>
                     </a>
                 </span>
-                <span class="icon-sec"><a href="https://www.example.com" target="_blank">
+                <span [ngClass]="currentUser?.profile?.social_links?.share ? 'icon-sec ': 'icon-disable'"><a
+                        [href]="currentUser?.profile?.social_links?.share" target="_blank">
                         <i class="fas fa-share-alt icon-img"></i>
                     </a>
                 </span>
@@ -41,40 +56,107 @@
             <div class="role-sec">
                 <div>
                     <p class="role-title">Role</p>
+                    @if (currentUser?.profile?.role) {
+
                     <p class="role-sub-title">{{currentUser?.profile?.role}}</p>
+                    }@else{
+                    <p class="default-title">Add Your Role</p>
+                    }
                 </div>
                 <div>
                     <p class="role-title">Experience</p>
+                    @if (currentUser?.profile?.experience) {
+
                     <p class="role-sub-title">{{currentUser?.profile?.experience}}</p>
+                    }@else {
+                    <p class="default-title">Add Your Experience</p>
+                    }
                 </div>
             </div>
             <!-- SuperPower -->
-            <div class="super-power" *ngIf="currentUser?.skills">
+            <div class="super-power">
                 <div class="power-title">
-                    <p>SuperPower Skills</p>
+                    <p>Skills Sets</p>
                 </div>
+                @if (currentUser?.skills) {
                 <div class="power-skills">
                     <div *ngFor="let skill of currentUser?.skills" class="profile-super-content">
                         <span><i class="fas fa-star"></i>
                             {{skill}}</span>
                     </div>
                 </div>
+                }@else {
+                <p class="default-title">Add Your Skill Set</p>
+                }
             </div>
         </div>
 
     </div>
     <div class="profile-tab-container">
-        <mat-tab-group>
+        <mat-tab-group class="mat-tab">
             <mat-tab label="My Story">
-
+                @if(currentUser?.sections?.myStory?.storyInPara || currentUser?.sections?.myStory?.storyInList){
+                <div class="story">
+                    <p>
+                        {{currentUser?.sections?.myStory?.storyInPara}}<br>
+                    </p>
+                    <ul *ngFor="let paragraph of currentUser?.sections?.myStory?.storyInList">
+                        <li>{{ paragraph }}</li>
+                    </ul>
+                </div>
+                }@else {
+                <div class="default-content">
+                    <p class="default-content-title">Add Your Story..</p>
+                </div>
+                }
             </mat-tab>
             <mat-tab label="Skills">
-
+                @if(currentUser?.sections?.skills){
+                <div>
+                    <div *ngFor="let category of currentUser?.sections?.skills">
+                        <h3>{{ category.name }}</h3>
+                        <ul>
+                            <li *ngFor="let skill of category.items">{{ skill }}</li>
+                        </ul>
+                    </div>
+                </div>
+                }@else {
+                <div class="default-content">
+                    <p class="default-content-title">Add Your Skills..</p>
+                </div>
+                }
             </mat-tab>
             <mat-tab label="Projects">
-
+                @if(currentUser?.sections?.projects){
+                <div class="projects-container">
+                    <div *ngFor="let project of currentUser?.sections?.projects" class="project-card">
+                        <h3>{{ project.name }}</h3>
+                        <p>{{ project.description }}</p>
+                        <p><strong>Technologies:</strong> {{ project.technologies.join(', ') }}</p>
+                        <a *ngIf="project.link" [href]="project.link" target="_blank">View Project</a>
+                    </div>
+                </div>
+                }@else {
+                <div class="default-content">
+                    <p class="default-content-title">Add Your Projects..</p>
+                </div>
+                }
             </mat-tab>
             <mat-tab label="Experience">
+                @if(currentUser?.sections?.experience){
+                <div class="experience-container">
+                    <div *ngFor="let experience of currentUser?.sections?.experience" class="experience-card">
+                        <h3>{{ experience.role }} at {{ experience.company }}</h3>
+                        <p><strong>Duration:</strong> {{ experience.duration }}</p>
+                        <p><strong>Technologies:</strong> {{ experience.technologies.join(', ') }}</p>
+                        <p>{{ experience.description }}</p>
+                    </div>
+                </div>
+                }@else {
+                <div class="default-content">
+                    <p class="default-content-title">Add Your Experience..</p>
+                </div>
+                }
 
             </mat-tab>
         </mat-tab-group>

@@ -11,17 +11,11 @@ import { IUserData } from '../../../models/userDetails';
   styleUrl: './first-template.component.scss'
 })
 export class FirstTemplateComponent implements OnInit {
-  // superPowerSkills: string[] = []
-  // name: string = "Fejin FM";
-  // profileName: string = "profile1"
-  // role: string = "Developer"
-  // experience: string = "3 Years"
   currentUser?: IUserData;
   constructor(private portfolioService: PortfolioService) { }
   ngOnInit(): void {
     this.portfolioService.currentUserData.subscribe({
       next: (data) => {
-        console.log("FirstTemplateComponent:: ", data);
         if (data) {
           this.currentUser = data;
         } else {

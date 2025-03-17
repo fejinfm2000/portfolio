@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
       this.username = segments[2];
     }
 
-    this.http.get<Users>('https://gist.githubusercontent.com/fejinfm2000/82d1f8b4f857460e85dabfb842327c5d/raw/5547dcf4ba3947acac5e04ee5ab8425892a6137d/portfoliolist.json')
+    this.http.get<Users>('https://gist.githubusercontent.com/fejinfm2000/82d1f8b4f857460e85dabfb842327c5d/raw/33371cdef4beebe032c2364536fb7c550f719b2e/portfoliolist.json')
       .subscribe({
         next: (res) => {
           this.users = res;
