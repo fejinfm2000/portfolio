@@ -79,7 +79,7 @@
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  margin: 2rem;
+  margin: 1rem;
 }
 
 .custom-button {
@@ -132,6 +132,17 @@
   &:hover {
     color: #0077b5; // LinkedIn blue for LinkedIn icon
   }
+}
+
+.intro-icons {
+  font-size: xx-large;
+  color: black;
+}
+
+.intro-icons-sec {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 
