@@ -31,17 +31,18 @@ export class AppComponent implements OnInit, OnDestroy {
       this.username = segments[2];
       this.templateName = segments[3];
     }
-    this.portfolioService.getGists().pipe(takeUntil(this.unSubscribe$)).subscribe(data => {
-      if (data.length > 0) {
-        this.portfolioService.getGistFile(data[0].id, 'portfoliolist.json').subscribe(data => {
+    // this.portfolioService.getGists().pipe(takeUntil(this.unSubscribe$)).subscribe(data => {
+    //   if (data.length > 0) {
+        // this.portfolioService.getGistFile(data[0].id, 'portfoliolist.json').subscribe(data => {
+        this.portfolioService.getGistFile().subscribe(data => {
           console.log(data);
           this.users = JSON.parse(data);
           this.currentUser = this.users[this.username as keyof typeof this.users];
           this.portfolioService.currentUserData.next(this.currentUser);
           this.portfolioService.templateName.next(this.templateName);
         });
-      }
-    })
+      // }
+    // })
   }
 
   ngOnDestroy(): void {
