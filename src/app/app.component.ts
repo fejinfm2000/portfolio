@@ -6,7 +6,6 @@ import { MainLayoutComponent } from "./main-layout/main-layout.component";
 import { IUserData, Users } from './models/userDetails';
 import { PortfolioService } from './service/portfolio.service';
 import { map, Observable, Subject, switchMap, takeUntil } from 'rxjs';
-import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
