@@ -4,8 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FirstTemplateComponent } from '../components/first-template/first-template.component';
 import { SecondTemplateComponent } from "../components/second-template/second-template.component";
-import { PortfolioService } from '../../service/portfolio.service';
 import { Subject, takeUntil } from 'rxjs';
+import { PortfolioService } from '../../service/portfolio.service';
 @Component({
   selector: 'app-portfolio',
   imports: [MatSidenavModule, MatButtonModule, FirstTemplateComponent, SecondTemplateComponent],

@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
-import { PortfolioService } from '../../../service/portfolio.service';
 import { IUserData } from '../../../models/userDetails';
 import { Subject, takeUntil } from 'rxjs';
+import { PortfolioService } from '../../../service/portfolio.service';
 
 @Component({
   selector: 'app-first-template',
