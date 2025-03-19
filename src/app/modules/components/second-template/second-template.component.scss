@@ -267,7 +267,8 @@ mat-card-title {
 }
 
 .skill i {
-  color: black; /* Checkmark color */
+  color: black;
+  /* Checkmark color */
   font-size: 16px;
 }
 
@@ -282,11 +283,12 @@ p {
   color: #666;
 }
 
-.footer-title{
+.footer-title {
   display: flex;
   justify-content: space-evenly;
   margin: 3rem;
 }
+
 @media (max-width: 600px) {
   .header-title {
     display: flex;
@@ -325,6 +327,16 @@ p {
     align-items: center;
     flex-direction: column;
     margin: 2rem;
+  }
+
+  .about-image {
+    height: 20rem;
+    border-radius: 2rem;
+  }
+
+  .profile-image {
+    height: 20rem;
+    border-radius: 100%;
   }
 
 
