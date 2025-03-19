@@ -68,3 +68,13 @@ export interface IUserData {
 export interface Users {
   [key: string]: IUserData;
 }
+
+export interface ISkill {
+  name: string;
+  level: string;
+}
+
+export interface ExperienceCategory {
+  title: string;
+  skills: ISkill[];
+}

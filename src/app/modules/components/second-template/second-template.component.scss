@@ -1,3 +1,8 @@
+h3 {
+  padding: 0rem;
+  margin: 0rem;
+}
+
 .example-spacer {
   flex: 1 1 auto;
 }
@@ -119,6 +124,11 @@
   border-radius: 100%;
 }
 
+.about-image {
+  height: 25rem;
+  border-radius: 2rem;
+}
+
 .intro-titles {
   margin: 0.1rem;
 }
@@ -145,7 +155,138 @@
   gap: 1rem;
 }
 
+.header-title-name {
+  text-decoration: none;
+  color: black;
+}
 
+.header-title-name:hover {
+  color: #0077b5;
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.about-first-sec {
+  font-size: larger;
+  color: gray;
+  font-weight: 200;
+}
+
+.about-second-sec {
+  font-size: xxx-large;
+  font-weight: 500;
+}
+
+.about-third-sec {
+  display: flex;
+  flex-direction: row;
+}
+
+.about-img-sec {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.about-content-sec {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.about-sub-cont-sec {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.about-first-sub-cont-sec {
+  border: 1.5px solid grey;
+  border-radius: 2rem;
+  margin: 1rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.arrow-down-sec {
+  display: flex;
+  justify-content: flex-end;
+  font-size: xx-large;
+  margin-right: 2rem;
+  margin-top: 2rem;
+}
+
+
+.experience-container {
+  text-align: center;
+  padding: 40px;
+}
+
+.section-title {
+  font-size: 18px;
+  color: #666;
+}
+
+.main-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.experience-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.experience-card {
+  width: 400px;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: left;
+  box-shadow: none;
+  border: 1px solid grey;
+  background-color: white;
+}
+
+mat-card-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.skill i {
+  color: black; /* Checkmark color */
+  font-size: 16px;
+}
+
+.skill-name {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.footer-title{
+  display: flex;
+  justify-content: space-evenly;
+  margin: 3rem;
+}
 @media (max-width: 600px) {
   .header-title {
     display: flex;
@@ -165,4 +306,26 @@
     margin: 1rem;
     background-color: white;
   }
+
+  .about-sub-cont-sec {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .about-third-sec {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .about-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 2rem;
+  }
+
+
 }

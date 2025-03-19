@@ -2,13 +2,13 @@
     <div class="first-container">
         <mat-toolbar style="background-color: white;">
             <span class="example-spacer-one"></span>
-            <span class="name">Buddy</span>
+            <span class="name" id="name">Buddy</span>
             <span class="example-spacer"></span>
             <div class="header-title">
-                <span>About</span>
-                <span>Experience</span>
-                <span>Projects</span>
-                <span>Contact</span>
+                <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="about">About</a>
+                <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="experience">Experience</a>
+                <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="projects">Projects</a>
+                <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="contact">Contact</a>
             </div>
             <div class="header-title-phone">
                 <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
@@ -16,16 +16,18 @@
                 </button>
                 <mat-menu style="background-color: white;" #menu="matMenu">
                     <button mat-menu-item>
-                        <span>About</span>
+                        <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="about">About</a>
                     </button>
                     <button mat-menu-item>
-                        <span>Experience</span>
+                        <a class="header-title-name" routerLink="/portfolio/buddy/second"
+                            fragment="experience">Experience</a>
                     </button>
                     <button mat-menu-item>
-                        <span>Projects</span>
+                        <a class="header-title-name" routerLink="/portfolio/buddy/second"
+                            fragment="projects">Projects</a>
                     </button>
                     <button mat-menu-item>
-                        <span>Contact</span>
+                        <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="contact">Contact</a>
                     </button>
                 </mat-menu>
 
@@ -35,8 +37,8 @@
     <div class="second-main-container">
         <div class="second-container">
             <div>
-                <img class="profile-image" [src]="'assets/images/' + '' + '.jpg'" (error)="onImageError($event)"
-                    alt="Profile Image">
+                <img class="profile-image" [src]="'assets/images/' + '' + '.jpg'"
+                    (error)="onImageError($event , 'defaultProfile')" alt="Profile Image">
             </div>
             <div class="second-intro-container">
                 <div class="intro-titles">
@@ -61,11 +63,172 @@
                             <i class="fab fa-github icon-img intro-icons" intro-icons></i>
                         </a>
                     </span>
-
-
                 </div>
             </div>
 
         </div>
     </div>
+
+    <section id="about" #aboutSection class="about-container">
+        <div class="about-first-sec">
+            <span>Get To Know More</span>
+        </div>
+        <div class="about-second-sec">
+            <span>About Me</span>
+        </div>
+        <div class="about-third-sec">
+            <div class="about-img-sec">
+                <img class="about-image" [src]="'assets/images/' + '' + '.jpg'"
+                    (error)="onImageError($event , 'default-about')" alt="Profile Image">
+            </div>
+            <div class="about-content-sec">
+                <div class="about-sub-cont-sec">
+                    <div class="about-first-sub-cont-sec">
+                        <i class="fas fa-briefcase icon-img intro-icons"></i><br>
+                        <h3>Experience</h3><br>
+
+                        2+ years
+                        Frontend Development
+                    </div>
+                    <div class="about-first-sub-cont-sec">
+                        <i class="fas fa-graduation-cap icon-img intro-icons"></i><br>
+                        <h3>Education</h3><br>
+
+                        B.Sc. Bachelors Degree
+                        M.Sc. Masters Degree
+                    </div>
+                </div>
+                <div>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Hic quis reprehenderit et laborum, rem, dolore eum quod voluptate exercitationem nobis,
+                    nihil esse debitis maxime facere minus sint delectus velit in eos quo
+                    officiis explicabo deleniti dignissimos. Eligendi illum libero dolorum
+                    cum laboriosam corrupti quidem, reiciendis ea magnam? Nulla, impedit fuga!
+                </div>
+                <div class="arrow-down-sec">
+                    <span>
+                        <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="experience"><i
+                                class="fas fa-arrow-down"></i></a>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section id="experience" #experience>
+        <div class="experience-container">
+            <div class="about-first-sec">
+                <span>Explore My</span>
+            </div>
+            <div class="about-second-sec">
+                <span>Experience</span>
+            </div><br>
+
+            <div class="experience-wrapper">
+                <!-- Loop through experience categories -->
+                <mat-card *ngFor="let category of experienceCategories" class="experience-card">
+                    <mat-card-title>{{ category.title }}</mat-card-title>
+                    <mat-card-content>
+                        <div *ngFor="let skill of category.skills" class="skill">
+                            <i class="fas fa-check-circle"></i> <span class="skill-name">{{ skill.name }}</span>
+                            <p>{{ skill.level }}</p>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="arrow-down-sec">
+                <span>
+                    <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="projects"><i
+                            class="fas fa-arrow-down"></i></a>
+                </span>
+            </div>
+        </div>
+
+    </section>
+    <section id="projects" #projectsSection>
+        <div class="experience-container">
+            <div class="about-first-sec">
+                <span>Browse My Recent</span>
+            </div>
+            <div class="about-second-sec">
+                <span>Projects</span>
+            </div><br>
+
+            <div class="experience-wrapper">
+                <!-- Loop through experience categories -->
+                <mat-card *ngFor="let category of projectCategories" class="experience-card">
+                    <mat-card-header>
+                        <mat-card-title>{{category.title}}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>{{category.des}}</p>
+                    </mat-card-content>
+
+                    <div class="intro-buttons">
+                        <button mat-stroked-button class="custom-button">Github</button>
+                        <a class="contact-custom-button" mat-flat-button href="https://github.com/your-profile">Live
+                            Demo</a>
+                    </div>
+                </mat-card>
+            </div>
+            <div class="arrow-down-sec">
+                <span>
+                    <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="contact"><i
+                            class="fas fa-arrow-down"></i></a>
+                </span>
+            </div>
+        </div>
+    </section>
+    <section id="contact" #contactSection>
+        <div class="experience-container">
+            <div class="about-first-sec">
+                <span>Get in Touch</span>
+            </div>
+            <div class="about-second-sec">
+                <span>Contact Me</span>
+            </div><br>
+
+            <div class="experience-wrapper">
+                <!-- Loop through experience categories -->
+                <mat-card class="experience-card">
+                    <div class="intro-buttons">
+                        <span>
+                            <a class="header-title-name" href="mailto:your-email@example.com">
+                                <i class="fas fa-envelope icon-img intro-icons">
+                                </i>
+                                {{"Example@gmail.com"}}
+                            </a>
+                        </span>
+                        <span><a class="header-title-name" [href]="'https://github.com/your-profile'" target="_blank">
+                                <i class="fab fa-github icon-img intro-icons" intro-icons></i>
+                                {{"LinkedIn"}}
+                            </a>
+                        </span>
+
+                        <!-- <button mat-stroked-button class="custom-button">Github</button>
+                        <a class="contact-custom-button" mat-flat-button href="https://github.com/your-profile">Live
+                            Demo</a> -->
+                    </div>
+                </mat-card>
+            </div>
+            <div class="arrow-down-sec">
+                <span>
+                    <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="name">
+                        <i class="fas fa-arrow-up"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="footer-title">
+            <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="about">About</a>
+            <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="experience">Experience</a>
+            <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="projects">Projects</a>
+            <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="contact">Contact</a>
+        </div>
+        <div class="footer-title">
+            <span>Copyright © 2023 fejin_francis. All Rights Reserved.</span>
+        </div>
+    </section>
 </div>
