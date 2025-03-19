@@ -1,10 +1,69 @@
-<mat-toolbar>
-    <span>John Doe</span>
-    <span class="example-spacer"></span>
-    <div class="header-title">
-        <span>About</span>
-        <span>Experience</span>
-        <span>Projects</span>
-        <span>Contact</span>
+<div class="main-container">
+    <div class="first-container">
+        <mat-toolbar style="background-color: white;">
+            <span class="example-spacer-one"></span>
+            <span class="name">Buddy</span>
+            <span class="example-spacer"></span>
+            <div class="header-title">
+                <span>About</span>
+                <span>Experience</span>
+                <span>Projects</span>
+                <span>Contact</span>
+            </div>
+            <div class="header-title-phone">
+                <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu style="background-color: white;" #menu="matMenu">
+                    <button mat-menu-item>
+                        <span>About</span>
+                    </button>
+                    <button mat-menu-item>
+                        <span>Experience</span>
+                    </button>
+                    <button mat-menu-item>
+                        <span>Projects</span>
+                    </button>
+                    <button mat-menu-item>
+                        <span>Contact</span>
+                    </button>
+                </mat-menu>
+
+            </div>
+        </mat-toolbar>
     </div>
-</mat-toolbar>
+    <div class="second-main-container">
+        <div class="second-container">
+            <div>
+                <img class="profile-image" [src]="'assets/images/' + '' + '.jpg'" (error)="onImageError($event)"
+                    alt="Profile Image">
+            </div>
+            <div class="second-intro-container">
+                <div class="intro-titles">
+                    <span class="greeting-title">Hello, I'm</span>
+                </div>
+                <div class="intro-titles">
+                    <span class="name-title">Buddy</span>
+                </div>
+                <div class="intro-titles">
+                    <span class="role-title">Add Your Role..</span>
+                </div>
+                <div class="intro-buttons">
+                    <button mat-stroked-button class="custom-button">Download CV</button>
+                    <a class="contact-custom-button" mat-flat-button href="https://www.google.com/">Contact Info</a>
+                </div>
+                <!-- <div>
+                    <a href="https://www.linkedin.com/in/your-profile" target="_blank">
+                        <fa-icon [icon]="'faLinkedin'" class="icon"></fa-icon>
+                      </a>
+                      
+                      <a href="https://github.com/your-profile" target="_blank">
+                        <fa-icon [icon]="'faGithub'" class="icon"></fa-icon>
+                      </a>
+                      
+                </div> -->
+            </div>
+
+        </div>
+    </div>
+</div>

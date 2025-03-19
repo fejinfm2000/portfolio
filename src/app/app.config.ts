@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { provideServerRouting, RenderMode, ServerRoute } from '@angular/ssr';
+import { RenderMode, ServerRoute, provideServerRouting } from '@angular/ssr'; 
 
 export const serverRoutes: ServerRoute[] = [
   {
