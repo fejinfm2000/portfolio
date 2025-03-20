@@ -35,7 +35,7 @@ export class PortfolioService {
     return this.http.get(rawUrl, { responseType: 'text' });
   }
   getSecondGistFile() {
-    const rawUrl = `https://gist.githubusercontent.com/fejinfm2000/d257532ddf3f1ee096a178775411c506/raw/98bc6e44edce244ef7d1dbc44238a43da3121b77/SecondPortfoliolist.json`;
+    const rawUrl = `https://gist.githubusercontent.com/fejinfm2000/d257532ddf3f1ee096a178775411c506/raw/2fafd58a720504fd9595860869dd9a0d07d32d00/SecondPortfoliolist.json`;
     return this.http.get(rawUrl, { responseType: 'text' });
   }
 }

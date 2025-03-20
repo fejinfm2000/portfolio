@@ -18,6 +18,8 @@ export interface ProjectCategory {
 
 export interface PortfolioData {
   name?: string;
+  profileImageUrl?: string;
+  aboutImageUrl?: string;
   greeting?: string;
   role?: string;
   resumeLink?: string;

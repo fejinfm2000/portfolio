@@ -48,7 +48,7 @@
     <div class="second-main-container">
         <div class="second-container">
             <div>
-                <img class="profile-image" [src]="'assets/images/' + '' + '.jpg'"
+                <img class="profile-image" [src]="'assets/images/' + currentUser?.profileImageUrl + '.jpg'"
                     (error)="onImageError($event , 'defaultProfile')" alt="Profile Image">
             </div>
             <div class="second-intro-container">
@@ -103,7 +103,7 @@
         </div>
         <div class="about-third-sec">
             <div class="about-img-sec">
-                <img class="about-image" [src]="'assets/images/' + currentUser?.aboutImage + '.jpg'"
+                <img class="about-image" [src]="'assets/images/' + currentUser?.aboutImageUrl + '.jpg'"
                     (error)="onImageError($event , 'default-about')" alt="Profile Image">
             </div>
             <div class="about-content-sec">
