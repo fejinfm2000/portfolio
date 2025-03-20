@@ -214,8 +214,8 @@
                     </mat-card-content>
 
                     <div class="intro-buttons">
-                        <a mat-stroked-button class="custom-button" [href]="category.gitLink" target="_blank">Github</a>
-                        <a class="contact-custom-button" mat-flat-button [href]="category.demoLink" target="_blank">Live
+                        <a mat-stroked-button class="custom-button" [ngClass]="category?.gitLink ? 'icon-sec': 'icon-disable'" [href]="category.gitLink" target="_blank">Github</a>
+                        <a class="contact-custom-button" [ngClass]="category?.demoLink ? 'icon-sec': 'icon-disable'"  mat-flat-button [href]="category.demoLink" target="_blank">Live
                             Demo</a>
                     </div>
                 </mat-card>
