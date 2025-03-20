@@ -20,6 +20,7 @@ h3 {
 
 .name {
   font-size: xx-large;
+  font-family: 'Roboto', sans-serif;
 }
 
 .header-title-phone {
@@ -57,6 +58,7 @@ h3 {
   font-size: xxx-large;
   font-weight: 500;
   margin: 1rem;
+  font-family: 'Roboto', sans-serif;
 }
 
 .greeting-title {
@@ -244,7 +246,7 @@ h3 {
 }
 
 .experience-card {
-  width: 400px;
+  width: 35rem;
   padding: 20px;
   border-radius: 12px;
   text-align: left;
@@ -287,6 +289,10 @@ p {
   display: flex;
   justify-content: space-evenly;
   margin: 3rem;
+}
+
+.footer-sec {
+  background-color: rgb(227, 224, 224);
 }
 
 @media (max-width: 600px) {

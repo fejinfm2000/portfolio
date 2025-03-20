@@ -2,7 +2,7 @@
     <div class="first-container">
         <mat-toolbar style="background-color: white;">
             <span class="example-spacer-one"></span>
-            <span class="name" id="name">Buddy</span>
+            <span class="name" id="name">{{resumeDetails.name}}</span>
             <span class="example-spacer"></span>
             <div class="header-title">
                 <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="about">About</a>
@@ -42,24 +42,26 @@
             </div>
             <div class="second-intro-container">
                 <div class="intro-titles">
-                    <span class="greeting-title">Hello, I'm</span>
+                    <span class="greeting-title">{{resumeDetails.greeting}}</span>
                 </div>
                 <div class="intro-titles">
-                    <span class="name-title">Buddy</span>
+                    <span class="name-title">{{resumeDetails.name}}</span>
                 </div>
                 <div class="intro-titles">
-                    <span class="role-title">Add Your Role..</span>
+                    <span class="role-title">{{resumeDetails.role}}</span>
                 </div>
                 <div class="intro-buttons">
-                    <button mat-stroked-button class="custom-button">Download CV</button>
-                    <a class="contact-custom-button" mat-flat-button href="https://www.google.com/">Contact Info</a>
+                    <a mat-stroked-button [href]="resumeDetails.resumeLink" target="_blank"
+                        class="custom-button">Download CV</a>
+                    <a class="contact-custom-button" mat-flat-button routerLink="/portfolio/buddy/second"
+                        fragment="contact">Contact Info</a>
                 </div>
                 <div class="intro-icons-sec">
-                    <span><a [href]="'https://www.linkedin.com/in/your-profile'" target="_blank">
+                    <span><a [href]="resumeDetails.linkedInUrl" target="_blank">
                             <i class="fab fa-linkedin icon-img intro-icons"></i>
                         </a>
                     </span>
-                    <span><a [href]="'https://github.com/your-profile'" target="_blank">
+                    <span><a [href]="resumeDetails.githubUrl" target="_blank">
                             <i class="fab fa-github icon-img intro-icons" intro-icons></i>
                         </a>
                     </span>
@@ -78,7 +80,7 @@
         </div>
         <div class="about-third-sec">
             <div class="about-img-sec">
-                <img class="about-image" [src]="'assets/images/' + '' + '.jpg'"
+                <img class="about-image" [src]="'assets/images/' + resumeDetails.aboutImage + '.jpg'"
                     (error)="onImageError($event , 'default-about')" alt="Profile Image">
             </div>
             <div class="about-content-sec">
@@ -86,24 +88,23 @@
                     <div class="about-first-sub-cont-sec">
                         <i class="fas fa-briefcase icon-img intro-icons"></i><br>
                         <h3>Experience</h3><br>
+                        <div *ngFor="let item of resumeDetails.experienceList">
+                            <p>{{item}}</p>
+                        </div>
 
-                        2+ years
-                        Frontend Development
                     </div>
                     <div class="about-first-sub-cont-sec">
                         <i class="fas fa-graduation-cap icon-img intro-icons"></i><br>
                         <h3>Education</h3><br>
-
-                        B.Sc. Bachelors Degree
-                        M.Sc. Masters Degree
+                        <div *ngFor="let item of resumeDetails.educationList">
+                            <p>{{item}}</p>
+                        </div>
                     </div>
                 </div>
                 <div>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Hic quis reprehenderit et laborum, rem, dolore eum quod voluptate exercitationem nobis,
-                    nihil esse debitis maxime facere minus sint delectus velit in eos quo
-                    officiis explicabo deleniti dignissimos. Eligendi illum libero dolorum
-                    cum laboriosam corrupti quidem, reiciendis ea magnam? Nulla, impedit fuga!
+                    <div *ngFor="let item of resumeDetails.aboutMeContentList">
+                        <p>{{item}}</p>
+                    </div>
                 </div>
                 <div class="arrow-down-sec">
                     <span>
@@ -126,7 +127,7 @@
 
             <div class="experience-wrapper">
                 <!-- Loop through experience categories -->
-                <mat-card *ngFor="let category of experienceCategories" class="experience-card">
+                <mat-card *ngFor="let category of resumeDetails.experienceCategories" class="experience-card">
                     <mat-card-title>{{ category.title }}</mat-card-title>
                     <mat-card-content>
                         <div *ngFor="let skill of category.skills" class="skill">
@@ -156,7 +157,7 @@
 
             <div class="experience-wrapper">
                 <!-- Loop through experience categories -->
-                <mat-card *ngFor="let category of projectCategories" class="experience-card">
+                <mat-card *ngFor="let category of resumeDetails.projectCategories" class="experience-card">
                     <mat-card-header>
                         <mat-card-title>{{category.title}}</mat-card-title>
                     </mat-card-header>
@@ -165,8 +166,8 @@
                     </mat-card-content>
 
                     <div class="intro-buttons">
-                        <button mat-stroked-button class="custom-button">Github</button>
-                        <a class="contact-custom-button" mat-flat-button href="https://github.com/your-profile">Live
+                        <a mat-stroked-button class="custom-button" [href]="category.gitLink" target="_blank">Github</a>
+                        <a class="contact-custom-button" mat-flat-button [href]="category.demoLink" target="_blank">Live
                             Demo</a>
                     </div>
                 </mat-card>
@@ -193,21 +194,17 @@
                 <mat-card class="experience-card">
                     <div class="intro-buttons">
                         <span>
-                            <a class="header-title-name" href="mailto:your-email@example.com">
+                            <a class="header-title-name" [href]="'mailto:'+resumeDetails.mailTo">
                                 <i class="fas fa-envelope icon-img intro-icons">
                                 </i>
-                                {{"Example@gmail.com"}}
+                                {{resumeDetails.email}}
                             </a>
                         </span>
-                        <span><a class="header-title-name" [href]="'https://github.com/your-profile'" target="_blank">
+                        <span><a class="header-title-name" [href]="resumeDetails.linkedInUrl" target="_blank">
                                 <i class="fab fa-github icon-img intro-icons" intro-icons></i>
                                 {{"LinkedIn"}}
                             </a>
                         </span>
-
-                        <!-- <button mat-stroked-button class="custom-button">Github</button>
-                        <a class="contact-custom-button" mat-flat-button href="https://github.com/your-profile">Live
-                            Demo</a> -->
                     </div>
                 </mat-card>
             </div>
@@ -220,7 +217,7 @@
             </div>
         </div>
     </section>
-    <section>
+    <section class="footer-sec">
         <div class="footer-title">
             <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="about">About</a>
             <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="experience">Experience</a>
