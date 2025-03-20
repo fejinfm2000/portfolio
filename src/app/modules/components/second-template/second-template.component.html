@@ -10,10 +10,14 @@
             }
             <span class="example-spacer"></span>
             <div class="header-title">
-                <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="about">About</a>
-                <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="experience">Experience</a>
-                <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="projects">Projects</a>
-                <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="contact">Contact</a>
+                <a class="header-title-name" [routerLink]="['/portfolio', userName, 'second']"
+                    fragment="about">About</a>
+                <a class="header-title-name" [routerLink]="['/portfolio', userName, 'second']"
+                    fragment="experience">Experience</a>
+                <a class="header-title-name" [routerLink]="['/portfolio', userName, 'second']"
+                    fragment="projects">Projects</a>
+                <a class="header-title-name" [routerLink]="['/portfolio', userName, 'second']"
+                    fragment="contact">Contact</a>
             </div>
             <div class="header-title-phone">
                 <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
@@ -21,18 +25,20 @@
                 </button>
                 <mat-menu style="background-color: white;" #menu="matMenu">
                     <button mat-menu-item>
-                        <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="about">About</a>
+                        <a class="header-title-name" [routerLink]="['/portfolio', userName, 'second']"
+                            fragment="about">About</a>
                     </button>
                     <button mat-menu-item>
-                        <a class="header-title-name" routerLink="/portfolio/buddy/second"
+                        <a class="header-title-name" [routerLink]="['/portfolio', userName, 'second']"
                             fragment="experience">Experience</a>
                     </button>
                     <button mat-menu-item>
-                        <a class="header-title-name" routerLink="/portfolio/buddy/second"
+                        <a class="header-title-name" [routerLink]="['/portfolio', userName, 'second']"
                             fragment="projects">Projects</a>
                     </button>
                     <button mat-menu-item>
-                        <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="contact">Contact</a>
+                        <a class="header-title-name" [routerLink]="['/portfolio', userName, 'second']"
+                            fragment="contact">Contact</a>
                     </button>
                 </mat-menu>
 
@@ -68,7 +74,7 @@
                     <a mat-stroked-button [ngClass]="currentUser?.resumeLink ? 'icon-sec': 'icon-disable'"
                         [href]="currentUser?.resumeLink" target="_blank" class="custom-button">Download
                         CV</a>
-                    <a class="contact-custom-button" mat-flat-button routerLink="/portfolio/buddy/second"
+                    <a class="contact-custom-button" mat-flat-button [routerLink]="['/portfolio', userName, 'second']"
                         fragment="contact">Contact Info</a>
                 </div>
                 <div class="intro-icons-sec">
@@ -140,8 +146,8 @@
                 </div>
                 <div class="arrow-down-sec">
                     <span>
-                        <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="experience"><i
-                                class="fas fa-arrow-down"></i></a>
+                        <a class="header-title-name" [routerLink]="['/portfolio', userName, 'second']"
+                            fragment="experience"><i class="fas fa-arrow-down"></i></a>
                     </span>
                 </div>
             </div>
@@ -180,8 +186,8 @@
             </div>
             <div class="arrow-down-sec">
                 <span>
-                    <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="projects"><i
-                            class="fas fa-arrow-down"></i></a>
+                    <a class="header-title-name" [routerLink]="['/portfolio', userName, 'second']"
+                        fragment="projects"><i class="fas fa-arrow-down"></i></a>
                 </span>
             </div>
         </div>
@@ -226,7 +232,7 @@
             </div>
             <div class="arrow-down-sec">
                 <span>
-                    <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="contact"><i
+                    <a class="header-title-name" [routerLink]="['/portfolio', userName, 'second']" fragment="contact"><i
                             class="fas fa-arrow-down"></i></a>
                 </span>
             </div>
@@ -264,7 +270,7 @@
             </div>
             <div class="arrow-down-sec">
                 <span>
-                    <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="name">
+                    <a class="header-title-name" [routerLink]="['/portfolio', userName, 'second']" fragment="name">
                         <i class="fas fa-arrow-up"></i>
                     </a>
                 </span>
@@ -273,10 +279,13 @@
     </section>
     <section class="footer-sec">
         <div class="footer-title">
-            <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="about">About</a>
-            <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="experience">Experience</a>
-            <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="projects">Projects</a>
-            <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="contact">Contact</a>
+            <a class="header-title-name" [routerLink]="['/portfolio', userName, 'second']" fragment="about">About</a>
+            <a class="header-title-name" [routerLink]="['/portfolio', userName, 'second']"
+                fragment="experience">Experience</a>
+            <a class="header-title-name" [routerLink]="['/portfolio', userName, 'second']"
+                fragment="projects">Projects</a>
+            <a class="header-title-name" [routerLink]="['/portfolio', userName, 'second']"
+                fragment="contact">Contact</a>
         </div>
         <div class="footer-title">
             <span>Copyright © 2023 fejin_francis. All Rights Reserved.</span>

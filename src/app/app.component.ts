@@ -43,6 +43,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.currentUser = this.users[this.username as keyof typeof this.users];
       this.portfolioService.currentUserData.next(this.currentUser);
       this.portfolioService.templateName.next(this.templateName);
+      this.portfolioService.userName.next(this.username);
     });
     // }
     // })
@@ -52,6 +53,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.secondPortfolioData = this.secondTemplatePortfolio[this.username as keyof typeof this.secondTemplatePortfolio];
       this.portfolioService.secondPortfolioData.next(this.secondPortfolioData);
       this.portfolioService.templateName.next(this.templateName);
+      this.portfolioService.userName.next(this.username);
     });
   }
 

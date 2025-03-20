@@ -20,9 +20,17 @@ import { PortfolioService } from '../../../service/portfolio.service';
 export class SecondTemplateComponent implements OnInit, OnDestroy {
   currentUser?: PortfolioData;
   unSubscribe$ = new Subject();
-
+  userName!: string;
   constructor(private portfolioService: PortfolioService) { }
   ngOnInit(): void {
+
+    this.portfolioService.userName.pipe(takeUntil(this.unSubscribe$)).subscribe({
+      next: (data) => {
+        if (data) {
+          this.userName = data;
+        }
+      }
+    })
     this.portfolioService.secondPortfolioData.pipe(takeUntil(this.unSubscribe$)).subscribe({
       next: (data) => {
         if (data) {

@@ -11,6 +11,7 @@ export class PortfolioService {
   currentUserData = new BehaviorSubject<IUserData>({});
   secondPortfolioData = new BehaviorSubject<PortfolioData>({});
   templateName = new BehaviorSubject<string>('first');
+  userName = new BehaviorSubject<string>('buddy');
   private apiUrl = 'https://api.github.com/users/fejinfm2000/gists';
   // private githubAccessToken = environment.githubAccessToken;
   constructor(private http: HttpClient) { }
