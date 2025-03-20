@@ -71,7 +71,6 @@ h3 {
 .role-title {
   font-size: xx-large;
   color: rgb(78, 78, 78);
-  margin: 1rem;
 }
 
 .second-intro-container {
@@ -218,7 +217,6 @@ h3 {
   justify-content: flex-end;
   font-size: xx-large;
   margin-right: 2rem;
-  margin-top: 2rem;
 }
 
 
@@ -293,6 +291,22 @@ p {
 
 .footer-sec {
   background-color: rgb(227, 224, 224);
+}
+
+.icon-disable {
+  pointer-events: none;
+}
+
+.default-about {
+  display: flex;
+  justify-content: center;
+}
+
+.default-about-content{
+  font-size: xx-large;
+  font-family: auto;
+  margin: 3rem;
+  color: rgb(173, 170, 170);
 }
 
 @media (max-width: 600px) {

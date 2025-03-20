@@ -2,7 +2,12 @@
     <div class="first-container">
         <mat-toolbar style="background-color: white;">
             <span class="example-spacer-one"></span>
-            <span class="name" id="name">{{resumeDetails.name}}</span>
+            @if (currentUser?.name) {
+            <span class="name" id="name">{{currentUser?.name || "Buddy"}}</span>
+            }
+            @else {
+            <span class="default-about-content">Buddy</span>
+            }
             <span class="example-spacer"></span>
             <div class="header-title">
                 <a class="header-title-name" routerLink="/portfolio/buddy/second" fragment="about">About</a>
@@ -42,26 +47,38 @@
             </div>
             <div class="second-intro-container">
                 <div class="intro-titles">
-                    <span class="greeting-title">{{resumeDetails.greeting}}</span>
+                    <span class="greeting-title">{{currentUser?.greeting || "Hello, I'm"}}</span>
                 </div>
                 <div class="intro-titles">
-                    <span class="name-title">{{resumeDetails.name}}</span>
+                    @if (currentUser?.name) {
+                    <span class="name-title">{{currentUser?.name}}</span>
+                    }
+                    @else {
+                    <span class="default-about-content">Buddy</span>
+                    }
                 </div>
                 <div class="intro-titles">
-                    <span class="role-title">{{resumeDetails.role}}</span>
+                    @if (currentUser?.role) {
+                    <span class="role-title">{{currentUser?.role}}</span>
+                    }@else {
+                    <span class="default-about-content">Add Your Role..</span>
+                    }
                 </div>
                 <div class="intro-buttons">
-                    <a mat-stroked-button [href]="resumeDetails.resumeLink" target="_blank"
-                        class="custom-button">Download CV</a>
+                    <a mat-stroked-button [ngClass]="currentUser?.resumeLink ? 'icon-sec': 'icon-disable'"
+                        [href]="currentUser?.resumeLink" target="_blank" class="custom-button">Download
+                        CV</a>
                     <a class="contact-custom-button" mat-flat-button routerLink="/portfolio/buddy/second"
                         fragment="contact">Contact Info</a>
                 </div>
                 <div class="intro-icons-sec">
-                    <span><a [href]="resumeDetails.linkedInUrl" target="_blank">
+                    <span><a [ngClass]="currentUser?.linkedInUrl ? 'icon-sec': 'icon-disable'"
+                            [href]="currentUser?.linkedInUrl" target="_blank">
                             <i class="fab fa-linkedin icon-img intro-icons"></i>
                         </a>
                     </span>
-                    <span><a [href]="resumeDetails.githubUrl" target="_blank">
+                    <span><a [ngClass]="currentUser?.githubUrl ? 'icon-sec': 'icon-disable'"
+                            [href]="currentUser?.githubUrl" target="_blank">
                             <i class="fab fa-github icon-img intro-icons" intro-icons></i>
                         </a>
                     </span>
@@ -80,7 +97,7 @@
         </div>
         <div class="about-third-sec">
             <div class="about-img-sec">
-                <img class="about-image" [src]="'assets/images/' + resumeDetails.aboutImage + '.jpg'"
+                <img class="about-image" [src]="'assets/images/' + currentUser?.aboutImage + '.jpg'"
                     (error)="onImageError($event , 'default-about')" alt="Profile Image">
             </div>
             <div class="about-content-sec">
@@ -88,23 +105,38 @@
                     <div class="about-first-sub-cont-sec">
                         <i class="fas fa-briefcase icon-img intro-icons"></i><br>
                         <h3>Experience</h3><br>
-                        <div *ngFor="let item of resumeDetails.experienceList">
+                        @if ((currentUser?.experienceList || []).length>0) {
+                        <div *ngFor="let item of currentUser?.experienceList">
                             <p>{{item}}</p>
                         </div>
+                        }@else {
+                        <p>Add Your Experience..</p>
+                        }
 
                     </div>
                     <div class="about-first-sub-cont-sec">
                         <i class="fas fa-graduation-cap icon-img intro-icons"></i><br>
                         <h3>Education</h3><br>
-                        <div *ngFor="let item of resumeDetails.educationList">
+                        @if ((currentUser?.educationList|| []).length>0) {
+                        <div *ngFor="let item of currentUser?.educationList">
                             <p>{{item}}</p>
                         </div>
+                        }@else {
+                        <p>Add Your Education..</p>
+                        }
                     </div>
                 </div>
                 <div>
-                    <div *ngFor="let item of resumeDetails.aboutMeContentList">
+                    @if ((currentUser?.aboutMeContentList || []).length>0) {
+                    <div *ngFor="let item of currentUser?.aboutMeContentList">
                         <p>{{item}}</p>
                     </div>
+                    }@else {
+                    <div class="default-about">
+
+                        <p class="default-about-content">Add Your About Details..</p>
+                    </div>
+                    }
                 </div>
                 <div class="arrow-down-sec">
                     <span>
@@ -127,7 +159,8 @@
 
             <div class="experience-wrapper">
                 <!-- Loop through experience categories -->
-                <mat-card *ngFor="let category of resumeDetails.experienceCategories" class="experience-card">
+                @if ((currentUser?.experienceCategories || []).length>0) {
+                <mat-card *ngFor="let category of currentUser?.experienceCategories" class="experience-card">
                     <mat-card-title>{{ category.title }}</mat-card-title>
                     <mat-card-content>
                         <div *ngFor="let skill of category.skills" class="skill">
@@ -136,6 +169,14 @@
                         </div>
                     </mat-card-content>
                 </mat-card>
+                }@else {
+                <mat-card class="experience-card">
+                    <mat-card-title> Add your Experience</mat-card-title>
+                    <mat-card-content>
+                        <p class="default-about-content">Add your Technologies..</p>
+                    </mat-card-content>
+                </mat-card>
+                }
             </div>
             <div class="arrow-down-sec">
                 <span>
@@ -157,7 +198,8 @@
 
             <div class="experience-wrapper">
                 <!-- Loop through experience categories -->
-                <mat-card *ngFor="let category of resumeDetails.projectCategories" class="experience-card">
+                @if ((currentUser?.projectCategories || []).length>0) {
+                <mat-card *ngFor="let category of currentUser?.projectCategories" class="experience-card">
                     <mat-card-header>
                         <mat-card-title>{{category.title}}</mat-card-title>
                     </mat-card-header>
@@ -171,6 +213,16 @@
                             Demo</a>
                     </div>
                 </mat-card>
+                }@else {
+                <mat-card class="experience-card">
+                    <mat-card-header>
+                        <mat-card-title>Add All your projects..</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p class="default-about-content">Add Description..</p>
+                    </mat-card-content>
+                </mat-card>
+                }
             </div>
             <div class="arrow-down-sec">
                 <span>
@@ -194,13 +246,15 @@
                 <mat-card class="experience-card">
                     <div class="intro-buttons">
                         <span>
-                            <a class="header-title-name" [href]="'mailto:'+resumeDetails.mailTo">
+                            <a class="header-title-name" [href]="'mailto:'+(currentUser?.mailTo || 'buddy@gmail.com')">
                                 <i class="fas fa-envelope icon-img intro-icons">
                                 </i>
-                                {{resumeDetails.email}}
+                                {{currentUser?.email || 'buddy@gmail.com'}}
                             </a>
                         </span>
-                        <span><a class="header-title-name" [href]="resumeDetails.linkedInUrl" target="_blank">
+                        <span><a class="header-title-name"
+                                [ngClass]="currentUser?.linkedInUrl ? 'icon-sec': 'icon-disable'"
+                                [href]="currentUser?.linkedInUrl" target="_blank">
                                 <i class="fab fa-github icon-img intro-icons" intro-icons></i>
                                 {{"LinkedIn"}}
                             </a>
