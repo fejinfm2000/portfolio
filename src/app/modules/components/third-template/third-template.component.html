@@ -1,0 +1,101 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened class="laptop-side-nav">
+        <div *ngTemplateOutlet="sidenavTemplate"></div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="notification-container header-title-phone">
+            <button class="bell-icon icon" (click)="toggleSidebar()">
+                <i class="fas fa-bars icon"></i>
+            </button>
+            <div class="side-nav" [class.open]="isSidebarOpen">
+                <div class="side-nav-header">
+                    <button class="close-btn icon-close" (click)="toggleSidebar()">×</button>
+                </div>
+                <div *ngTemplateOutlet="sidenavTemplate"></div>
+            </div>
+        </div>
+
+        @switch (tabName) {
+        @case ('home') {
+        <div>
+            Home
+        </div>
+        }
+        @case ('about') {
+        <div>
+            About
+        </div>
+        }
+        @case ('education') {
+        <div>
+            Education
+        </div>
+        }
+        @case ('skills') {
+        <div>
+            Skills
+        </div>
+        }
+        @case ('projects') {
+        <div>
+            Projects
+        </div>
+        }
+        @case ('experience') {
+        <div>
+            Experience
+        </div>
+        }
+        @case ('accomplishments') {
+        <div>
+            Accomplishments
+        </div>
+        }
+        @case ('languages') {
+        <div>
+            Languages
+        </div>
+        }
+        @case ('contact') {
+        <div>
+            contact
+        </div>
+        }
+
+        }
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+<ng-template #sidenavTemplate>
+    <div class="side-nav-header">
+        <img class="profile-image" [src]="'assets/images/' + 'fejin' + '.jpg'" alt="Profile Image">
+    </div>
+    <div class="side-nav-tabs-head">
+        <h2>FEJIN FM</h2>
+    </div>
+    <div class="side-nav-role">
+        FULL STACK DEVELOPER
+    </div>
+    <div class="side-nav-tabs">
+        <a [ngClass]="tabName=='home'?'nav-tabs-alive':'nav-tabs'" mat-list-item (click)="change('home')">Profile
+            Info</a>
+        <a [ngClass]="tabName=='about'?'nav-tabs-alive':'nav-tabs'" mat-list-item (click)="change('about')">About</a>
+        <a [ngClass]="tabName=='education'?'nav-tabs-alive':'nav-tabs'" mat-list-item
+            (click)="change('education')">Education</a>
+        <a [ngClass]="tabName=='skills'?'nav-tabs-alive':'nav-tabs'" mat-list-item (click)="change('skills')">Skills</a>
+        <a [ngClass]="tabName=='projects'?'nav-tabs-alive':'nav-tabs'" mat-list-item (click)="change('projects')"> Key
+            Projects</a>
+        <a [ngClass]="tabName=='experience'?'nav-tabs-alive':'nav-tabs'" mat-list-item
+            (click)="change('experience')">Work Experience</a>
+        <a [ngClass]="tabName=='accomplishments'?'nav-tabs-alive':'nav-tabs'" mat-list-item
+            (click)="change('accomplishments')">Accomplishments</a>
+        <a [ngClass]="tabName=='languages'?'nav-tabs-alive':'nav-tabs'" mat-list-item
+            (click)="change('languages')">Languages</a>
+        <a [ngClass]="tabName=='contact'?'nav-tabs-alive':'nav-tabs'" mat-list-item
+            (click)="change('contact')">Contact</a>
+    </div>
+    <div class="side-nav-footer">
+        <p>Copyright © 2023 fejin_francis. All Rights Reserved.</p>
+    </div>
+</ng-template>

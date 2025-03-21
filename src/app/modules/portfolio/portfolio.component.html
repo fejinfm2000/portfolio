@@ -10,8 +10,10 @@
         </button> -->
         @if (templateName=="first") {
         <app-first-template></app-first-template>
-        }@else {
+        }@else if(templateName=="second") {
         <app-second-template></app-second-template>
+        }@else {
+        <app-third-template></app-third-template>
         }
     </div>
 </mat-drawer-container>
