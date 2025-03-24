@@ -17,19 +17,62 @@
 
         @switch (tabName) {
         @case ('home') {
-        <div>
-            Home
+        <div class="home-container">
+            <div>
+                <h1>Hi, I'm {{name}}</h1>
+                <h2>{{homeSubTitle}}</h2>
+                <span>{{homeDescription}}</span>
+            </div>
+            <div>
+                <img class="profile-home-image" [src]="'assets/images/' + 'fejin' + '.jpg'"
+                    (error)="onImageError($event , 'defaultProfile')" alt="Profile Image">
+            </div>
         </div>
         }
         @case ('about') {
         <div>
-            About
+
+            <div class="about-sec">
+                <h3>{{ aboutTitle }}</h3><br>
+                <p>{{ aboutDescription }}</p>
+                <ul>
+                    <li *ngFor="let point of aboutPoints">{{ point }}</li>
+                </ul>
+            </div>
         </div>
         }
         @case ('education') {
-        <div>
-            Education
+        <div class="main-education-container">
+            <h3>Education</h3><br>
+
+            <div class="experience-card-container">
+                <mat-card *ngFor="let edu of education" class="experience-card">
+                    <mat-card-header>
+                        <mat-card-title>{{ edu.degree }}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>{{ edu.university }} - {{ edu.years }}</p>
+                        <ul class="edu-details">
+                            <li *ngFor="let point of edu.details">{{ point }}</li>
+                        </ul>
+                    </mat-card-content>
+                </mat-card>
+
+            </div>
+            <h3>Certifications</h3><br>
+
+            <div class="experience-card-container">
+                <mat-card *ngFor="let cert of certifications" class="experience-card">
+                    <mat-card-header>
+                        <mat-card-title>{{ cert.name }}</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>{{ cert.date }}</p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
         </div>
+
         }
         @case ('skills') {
         <div>
