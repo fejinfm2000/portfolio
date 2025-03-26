@@ -21,7 +21,9 @@
             <div>
                 <h1>Hi, I'm {{name}}</h1>
                 <h2>{{homeSubTitle}}</h2>
-                <span>{{homeDescription}}</span>
+                <span>{{homeDescription}}</span><br>
+                <a class="nav-tabs" style="text-decoration: underline;" (click)="change('decoration')">page Decoration
+                    key</a>
             </div>
             <div>
                 <img class="profile-home-image" [src]="'assets/images/' + 'fejin' + '.jpg'"
@@ -39,6 +41,7 @@
                     <li *ngFor="let point of aboutPoints">{{ point }}</li>
                 </ul>
             </div>
+            <div [innerHTML]="aboutHtmlContent"></div>
         </div>
         }
         @case ('education') {
@@ -76,32 +79,115 @@
         }
         @case ('skills') {
         <div>
-            Skills
+            <section class="skills-container">
+                <h2 class="section-title">Skills</h2>
+                <p class="updated-date">Last updated: March 2025</p>
+                <div class="skills-list">
+                    <div *ngFor="let skill of skills" class="skill-item">
+                        <span class="skill-name">{{ skill.name }}</span>
+                        <span class="skill-level">{{ skill.level }}</span>
+                    </div>
+                </div>
+            </section>
         </div>
         }
         @case ('projects') {
         <div>
-            Projects
+            <section class="projects-container">
+                <h2 class="section-title">Key Projects</h2>
+                <div class="project-list">
+                    <div *ngFor="let project of projects" class="project-item">
+                        <h3 class="project-name">{{ project.name }}</h3>
+                        <p class="project-duration">{{ project.duration }}</p>
+                        <p class="project-description">{{ project.description }}</p>
+                        <div class="technologies">
+                            <span *ngFor="let tech of project.technologies" class="tech-badge">{{ tech }}</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </div>
         }
         @case ('experience') {
         <div>
-            Experience
+            <section class="work-experience-container">
+                <h2 class="section-title">Work Experience</h2>
+                <div class="experience-list">
+                    <div *ngFor="let exp of experiences" class="experience-item">
+                        <h3 class="experience-role">{{ exp.role }}</h3>
+                        <p class="experience-company">{{ exp.company }}</p>
+                        <p class="experience-duration">{{ exp.duration }}</p>
+                        <ul class="experience-description">
+                            <li *ngFor="let detail of exp.description">{{ detail }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
         </div>
         }
         @case ('accomplishments') {
         <div>
-            Accomplishments
+            <section class="accomplishments-container">
+                <h2 class="section-title">Accomplishments</h2>
+                <div class="accomplishment-list">
+                    <div *ngFor="let acc of accomplishments" class="accomplishment-item">
+                        <h3 class="accomplishment-title">{{ acc.title }}</h3>
+                        <p class="accomplishment-date">{{ acc.date }}</p>
+                        <p class="accomplishment-description">{{ acc.description }}</p>
+                    </div>
+                </div>
+            </section>
+
         </div>
         }
         @case ('languages') {
         <div>
-            Languages
+            <section class="languages-container">
+                <h2 class="section-title">Languages</h2>
+
+                <div class="language-category">
+                    <h3 class="category-title">Spoken Languages</h3>
+                    <ul class="language-list">
+                        <li *ngFor="let language of spokenLanguages">{{ language }}</li>
+                    </ul>
+                </div>
+
+                <div class="language-category">
+                    <h3 class="category-title">Programming Languages</h3>
+                    <ul class="language-list">
+                        <li *ngFor="let language of programmingLanguages">{{ language }}</li>
+                    </ul>
+                </div>
+            </section>
+
         </div>
         }
         @case ('contact') {
         <div>
-            contact
+            <section class="contact-container">
+                <div class="contact-card">
+                    <h2 class="section-title">Contact Me</h2>
+
+                    <div class="contact-details">
+                        <p>Email: <a href="mailto:{{ contactInfo.email }}">{{ contactInfo.email }}</a>
+                        </p>
+                        <p>Phone: <a href="tel:{{ contactInfo.phone }}">{{ contactInfo.phone }}</a></p>
+                        <p>Location: {{ contactInfo.location }}</p>
+                        <p>LinkedIn: <a href="{{ contactInfo.linkedIn }}" target="_blank">View
+                                Profile</a></p>
+                        <p>GitHub: <a href="{{ contactInfo.github }}" target="_blank">View
+                                Repositories</a></p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+        }
+        @case ('decoration') {
+        <div>
+            <app-rich-text></app-rich-text>
         </div>
         }
 
@@ -137,6 +223,7 @@
             (click)="change('languages')">Languages</a>
         <a [ngClass]="tabName=='contact'?'nav-tabs-alive':'nav-tabs'" mat-list-item
             (click)="change('contact')">Contact</a>
+
     </div>
     <div class="side-nav-footer">
         <p>Copyright © 2023 fejin_francis. All Rights Reserved.</p>

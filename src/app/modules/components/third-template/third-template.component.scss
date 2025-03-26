@@ -154,6 +154,298 @@ h2 {
   background-color: white;
 }
 
+.skills-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.updated-date {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin-bottom: 15px;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-item {
+  background: white;
+  padding: 10px 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  color: #34495e;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 48%;
+}
+
+.skill-name {
+  font-weight: bold;
+}
+
+.skill-level {
+  font-size: 14px;
+  color: #7f8c8d;
+}
+
+.projects-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.project-item {
+  background: white;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.project-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #34495e;
+}
+
+.project-duration {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin: 5px 0;
+}
+
+.project-description {
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+.technologies {
+  margin-top: 10px;
+}
+
+.tech-badge {
+  background: #3498db;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.work-experience-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.experience-item {
+  background: white;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.experience-role {
+  font-size: 20px;
+  font-weight: bold;
+  color: #34495e;
+}
+
+.experience-company {
+  font-size: 16px;
+  font-weight: 500;
+  color: #7f8c8d;
+}
+
+.experience-duration {
+  font-size: 14px;
+  color: #95a5a6;
+  margin: 5px 0;
+}
+
+.experience-description {
+  font-size: 16px;
+  color: #2c3e50;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+
+.accomplishments-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.accomplishment-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.accomplishment-item {
+  background: white;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.accomplishment-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #34495e;
+}
+
+.accomplishment-date {
+  font-size: 14px;
+  color: #7f8c8d;
+  margin: 5px 0;
+}
+
+.accomplishment-description {
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+.languages-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.language-category {
+  margin-bottom: 20px;
+}
+
+.category-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #34495e;
+}
+
+.language-list {
+  gap: 2rem;
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+}
+
+.language-list li {
+  font-size: 16px;
+  color: #2c3e50;
+  background: white;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.contact-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.contact-card {
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid black;
+  max-width: 400px;
+  width: 90%;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.contact-details {
+  font-size: 16px;
+  color: #555;
+}
+
+.contact-details p {
+  margin: 10px 0;
+}
+
+.contact-details a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+}
+
+
 @media (min-width: 600px) {
   .header-title-phone {
     display: none;

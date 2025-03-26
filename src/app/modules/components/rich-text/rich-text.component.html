@@ -1,0 +1,16 @@
+<!-- Rich Text Editor -->
+<div class="editor-container" *ngIf="isBrowser">
+    <h2>Rich Text</h2>
+    <quill-editor [(ngModel)]="userText" theme="snow"></quill-editor>
+</div>
+
+<!-- Preview the Generated HTML -->
+
+<div class="copy-container">
+    <h3>Use The Text:</h3>
+    <div>{{userText}}</div>
+    <button (click)="copyToClipboard()" [ngClass]="{ 'copied': copied }">
+        <i *ngIf="!copied" class="fas fa-copy"></i>
+        <i *ngIf="copied" class="fas fa-check"></i>
+    </button>
+</div>
