@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { MainLayoutComponent } from "./main-layout/main-layout.component";
-import { IThProfile, IThUsers, IUserData, Users } from './models/userDetails';
+import { IFoProfile, IFoUsers, IThProfile, IThUsers, IUserData, Users } from './models/userDetails';
 import { PortfolioService } from './service/portfolio.service';
 import { map, Observable, Subject, switchMap, takeUntil } from 'rxjs';
 import { ISecondTemplatePortfolio, PortfolioData } from './models/secondPortfolioDetails';
@@ -22,9 +22,11 @@ export class AppComponent implements OnInit, OnDestroy {
   users!: Users;
   secondTemplatePortfolio!: ISecondTemplatePortfolio;
   thirdTemplatePortfolio!: IThUsers;
+  fourthTemplatePortfolio!: IFoUsers;
   currentUser!: IUserData;
   secondPortfolioData!: PortfolioData;
   thirdPortfolioData!: IThProfile;
+  forthPortfolioData!: IFoProfile;
   unSubscribe$ = new Subject();
   constructor(private location: Location, private portfolioService: PortfolioService) { }
 
@@ -62,6 +64,14 @@ export class AppComponent implements OnInit, OnDestroy {
       this.thirdTemplatePortfolio = JSON.parse(data);
       this.thirdPortfolioData = this.thirdTemplatePortfolio[this.username as keyof typeof this.thirdTemplatePortfolio];
       this.portfolioService.thirdPortfolioData.next(this.thirdPortfolioData);
+      this.portfolioService.templateName.next(this.templateName);
+      this.portfolioService.userName.next(this.username);
+    });
+
+    this.portfolioService.getFourthGistFile().pipe(takeUntil(this.unSubscribe$)).subscribe(data => {
+      this.fourthTemplatePortfolio = JSON.parse(data);
+      this.forthPortfolioData = this.fourthTemplatePortfolio[this.username as keyof typeof this.fourthTemplatePortfolio];
+      this.portfolioService.forthPortfolioData.next(this.forthPortfolioData);
       this.portfolioService.templateName.next(this.templateName);
       this.portfolioService.userName.next(this.username);
     });

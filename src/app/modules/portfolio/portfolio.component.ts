@@ -7,11 +7,12 @@ import { SecondTemplateComponent } from "../components/second-template/second-te
 import { Subject, takeUntil } from 'rxjs';
 import { PortfolioService } from '../../service/portfolio.service';
 import { ThirdTemplateComponent } from '../components/third-template/third-template.component';
+import { FourthTemplateComponent } from '../components/fourth-template/fourth-template.component';
 @Component({
   selector: 'app-portfolio',
   imports: [MatSidenavModule, MatButtonModule,
     FirstTemplateComponent, SecondTemplateComponent,
-    ThirdTemplateComponent],
+    ThirdTemplateComponent, FourthTemplateComponent],
   templateUrl: './portfolio.component.html',
   styleUrl: './portfolio.component.scss'
 })

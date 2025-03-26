@@ -136,6 +136,12 @@ export interface IThContactInfo {
   github: string;
 }
 
+export interface IFoProfile {
+  name?: string;
+  imgName?: string;
+  innerHtml?: string;
+}
+
 export interface IThProfile {
   name?: string;
   imgName?: string;
@@ -155,3 +161,8 @@ export interface IThProfile {
 export interface IThUsers {
   [key: string]: IThProfile;
 }
+
+export interface IFoUsers {
+  [key: string]: IFoProfile;
+}
+
