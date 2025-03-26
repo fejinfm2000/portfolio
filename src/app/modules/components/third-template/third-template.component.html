@@ -265,14 +265,14 @@
         @if (currentUser?.name) {
         <h2>{{currentUser?.name }}</h2>
         }@else {
-        <h2>Buddy</h2>
+        <h2 class="default-side-pro">Buddy</h2>
         }
     </div>
     <div class="side-nav-role">
         @if (currentUser?.home?.subTitle) {
         {{currentUser?.home?.subTitle}}
         }@else {
-        Add Your Role..
+        <span class="default-side-pro"> Add Your Role..</span>
         }
     </div>
     <div class="side-nav-tabs">
