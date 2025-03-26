@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { MainLayoutComponent } from "./main-layout/main-layout.component";
-import { IUserData, Users } from './models/userDetails';
+import { IThProfile, IThUsers, IUserData, Users } from './models/userDetails';
 import { PortfolioService } from './service/portfolio.service';
 import { map, Observable, Subject, switchMap, takeUntil } from 'rxjs';
 import { ISecondTemplatePortfolio, PortfolioData } from './models/secondPortfolioDetails';
@@ -21,8 +21,10 @@ export class AppComponent implements OnInit, OnDestroy {
   templateName: string = 'first';
   users!: Users;
   secondTemplatePortfolio!: ISecondTemplatePortfolio;
+  thirdTemplatePortfolio!: IThUsers;
   currentUser!: IUserData;
   secondPortfolioData!: PortfolioData;
+  thirdPortfolioData!: IThProfile;
   unSubscribe$ = new Subject();
   constructor(private location: Location, private portfolioService: PortfolioService) { }
 
@@ -52,6 +54,14 @@ export class AppComponent implements OnInit, OnDestroy {
       this.secondTemplatePortfolio = JSON.parse(data);
       this.secondPortfolioData = this.secondTemplatePortfolio[this.username as keyof typeof this.secondTemplatePortfolio];
       this.portfolioService.secondPortfolioData.next(this.secondPortfolioData);
+      this.portfolioService.templateName.next(this.templateName);
+      this.portfolioService.userName.next(this.username);
+    });
+
+    this.portfolioService.getThirdGistFile().pipe(takeUntil(this.unSubscribe$)).subscribe(data => {
+      this.thirdTemplatePortfolio = JSON.parse(data);
+      this.thirdPortfolioData = this.thirdTemplatePortfolio[this.username as keyof typeof this.thirdTemplatePortfolio];
+      this.portfolioService.thirdPortfolioData.next(this.thirdPortfolioData);
       this.portfolioService.templateName.next(this.templateName);
       this.portfolioService.userName.next(this.username);
     });

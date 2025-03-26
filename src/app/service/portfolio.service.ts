@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { IUserData } from '../models/userDetails';
+import { IThProfile, IUserData } from '../models/userDetails';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PortfolioData } from '../models/secondPortfolioDetails';
 
@@ -9,6 +9,7 @@ import { PortfolioData } from '../models/secondPortfolioDetails';
 })
 export class PortfolioService {
   currentUserData = new BehaviorSubject<IUserData>({});
+  thirdPortfolioData = new BehaviorSubject<IThProfile>({});
   secondPortfolioData = new BehaviorSubject<PortfolioData>({});
   templateName = new BehaviorSubject<string>('first');
   userName = new BehaviorSubject<string>('buddy');
@@ -36,6 +37,10 @@ export class PortfolioService {
   }
   getSecondGistFile() {
     const rawUrl = `https://gist.githubusercontent.com/fejinfm2000/d257532ddf3f1ee096a178775411c506/raw/cb10cfc335f449288d69c396d84157ebf8acb5dd/SecondPortfoliolist.json`;
+    return this.http.get(rawUrl, { responseType: 'text' });
+  }
+  getThirdGistFile() {
+    const rawUrl = `https://gist.githubusercontent.com/fejinfm2000/888c19bdcb0fbee4e5a01cd3b35dbde1/raw/147368ffddc2304879dbc783a0a56eefbd62693a/thirdPortfolioList.json`;
     return this.http.get(rawUrl, { responseType: 'text' });
   }
 }

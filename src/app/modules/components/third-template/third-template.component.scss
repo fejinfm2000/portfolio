@@ -131,6 +131,14 @@ h2 {
   margin: 2rem;
 }
 
+.default-sec {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .experience-card-container {
   display: flex;
   flex-wrap: wrap;
@@ -145,7 +153,7 @@ h2 {
 }
 
 .experience-card {
-  width: 25rem;
+  // width: 25rem;
   padding: 20px;
   border-radius: 12px;
   text-align: left;
@@ -191,11 +199,12 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 48%;
+  // width: 48%;
 }
 
 .skill-name {
   font-weight: bold;
+  margin-right: 1rem
 }
 
 .skill-level {
@@ -250,6 +259,10 @@ h2 {
 
 .technologies {
   margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .tech-badge {
@@ -445,6 +458,15 @@ h2 {
   text-decoration: underline;
 }
 
+.default-profile {
+  color: #bab5b5;
+  font-family: auto;
+  font-size: xx-large;
+}
+
+.profile-home-image {
+  border-radius: 100%;
+}
 
 @media (min-width: 600px) {
   .header-title-phone {
@@ -484,6 +506,19 @@ h2 {
 
   .profile-home-image {
     height: 18rem;
+    border-radius: 100%;
+  }
+
+  .skill-item {
+    background: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    color: #34495e;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
 }

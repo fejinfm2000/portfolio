@@ -19,37 +19,61 @@
         @case ('home') {
         <div class="home-container">
             <div>
-                <h1>Hi, I'm {{name}}</h1>
-                <h2>{{homeSubTitle}}</h2>
-                <span>{{homeDescription}}</span><br>
+                @if (currentUser?.name) {
+                <h1>Hi, I'm {{currentUser?.name}}</h1>
+                }@else {
+                <h1 class="default-profile">Hi, I'm Buddy</h1>
+                }
+                @if(currentUser?.home?.subTitle){
+                <h2>{{currentUser?.home?.subTitle}}</h2>
+                }@else {
+                <h2 class="default-profile">Add your Description..</h2>
+
+                }
+                <span>{{currentUser?.home?.description}}</span><br>
                 <a class="nav-tabs" style="text-decoration: underline;" (click)="change('decoration')">page Decoration
                     key</a>
             </div>
             <div>
-                <img class="profile-home-image" [src]="'assets/images/' + 'fejin' + '.jpg'"
+                <img class="profile-home-image" [src]="'assets/images/' + currentUser?.imgName + '.jpg'"
                     (error)="onImageError($event , 'defaultProfile')" alt="Profile Image">
             </div>
         </div>
         }
         @case ('about') {
-        <div>
-
+        <div class="default-sec">
             <div class="about-sec">
-                <h3>{{ aboutTitle }}</h3><br>
-                <p>{{ aboutDescription }}</p>
+                @if(currentUser?.about?.title){
+                <h3>{{ currentUser?.about?.title }}</h3><br>
+                }@else {
+                <h3 class="default-profile">Add your About Title..</h3>
+
+                }
+                @if(currentUser?.about?.description){
+                <p>{{ currentUser?.about?.description }}</p>
+
+                }@else{
+                <p class="default-profile">Add your Description..</p>
+                }
+                @if(currentUser?.about?.points){
                 <ul>
-                    <li *ngFor="let point of aboutPoints">{{ point }}</li>
+                    <li *ngFor="let point of currentUser?.about?.points">{{ point }}</li>
                 </ul>
+                }
+
             </div>
-            <div [innerHTML]="aboutHtmlContent"></div>
+            @if(currentUser?.about?.htmlContent){
+            <div [innerHTML]="currentUser?.about?.htmlContent"></div>
+            }
         </div>
         }
         @case ('education') {
-        <div class="main-education-container">
-            <h3>Education</h3><br>
+        <div class="main-education-container default-sec">
 
+            @if(currentUser?.education){
+            <h3>Education</h3><br>
             <div class="experience-card-container">
-                <mat-card *ngFor="let edu of education" class="experience-card">
+                <mat-card *ngFor="let edu of currentUser?.education" class="experience-card">
                     <mat-card-header>
                         <mat-card-title>{{ edu.degree }}</mat-card-title>
                     </mat-card-header>
@@ -62,10 +86,14 @@
                 </mat-card>
 
             </div>
-            <h3>Certifications</h3><br>
+            }@else {
+            <h2 class="default-profile">Add Your Education..</h2>
+            }
 
+            @if (currentUser?.certifications) {
+            <h3>Certifications</h3><br>
             <div class="experience-card-container">
-                <mat-card *ngFor="let cert of certifications" class="experience-card">
+                <mat-card *ngFor="let cert of currentUser?.certifications" class="experience-card">
                     <mat-card-header>
                         <mat-card-title>{{ cert.name }}</mat-card-title>
                     </mat-card-header>
@@ -74,29 +102,38 @@
                     </mat-card-content>
                 </mat-card>
             </div>
+            }
+            @else {
+            <h2 class="default-profile">Add Your Certifications..</h2>
+            }
         </div>
 
         }
         @case ('skills') {
-        <div>
+        <div class="default-sec">
+            @if (currentUser?.skills) {
             <section class="skills-container">
                 <h2 class="section-title">Skills</h2>
                 <p class="updated-date">Last updated: March 2025</p>
                 <div class="skills-list">
-                    <div *ngFor="let skill of skills" class="skill-item">
+                    <div *ngFor="let skill of currentUser?.skills" class="skill-item">
                         <span class="skill-name">{{ skill.name }}</span>
                         <span class="skill-level">{{ skill.level }}</span>
                     </div>
                 </div>
             </section>
+            }@else {
+            <h3 class="default-profile">Add Your Skills..</h3>
+            }
         </div>
         }
         @case ('projects') {
-        <div>
+        <div class="default-sec">
+            @if (currentUser?.projects) {
             <section class="projects-container">
                 <h2 class="section-title">Key Projects</h2>
                 <div class="project-list">
-                    <div *ngFor="let project of projects" class="project-item">
+                    <div *ngFor="let project of currentUser?.projects" class="project-item">
                         <h3 class="project-name">{{ project.name }}</h3>
                         <p class="project-duration">{{ project.duration }}</p>
                         <p class="project-description">{{ project.description }}</p>
@@ -106,15 +143,19 @@
                     </div>
                 </div>
             </section>
+            }@else {
+            <h3 class="default-profile">Add Your Key Projects..</h3>
+            }
 
         </div>
         }
         @case ('experience') {
-        <div>
+        <div class="default-sec">
+            @if (currentUser?.experiences) {
             <section class="work-experience-container">
                 <h2 class="section-title">Work Experience</h2>
                 <div class="experience-list">
-                    <div *ngFor="let exp of experiences" class="experience-item">
+                    <div *ngFor="let exp of currentUser?.experiences" class="experience-item">
                         <h3 class="experience-role">{{ exp.role }}</h3>
                         <p class="experience-company">{{ exp.company }}</p>
                         <p class="experience-duration">{{ exp.duration }}</p>
@@ -124,42 +165,55 @@
                     </div>
                 </div>
             </section>
+            }@else {
+            <h3 class="default-profile">Add Your Work Experience..</h3>
+            }
 
         </div>
         }
         @case ('accomplishments') {
-        <div>
+        <div class="default-sec">
+            @if (currentUser?.accomplishments) {
             <section class="accomplishments-container">
                 <h2 class="section-title">Accomplishments</h2>
                 <div class="accomplishment-list">
-                    <div *ngFor="let acc of accomplishments" class="accomplishment-item">
+                    <div *ngFor="let acc of currentUser?.accomplishments" class="accomplishment-item">
                         <h3 class="accomplishment-title">{{ acc.title }}</h3>
                         <p class="accomplishment-date">{{ acc.date }}</p>
                         <p class="accomplishment-description">{{ acc.description }}</p>
                     </div>
                 </div>
             </section>
+            }@else {
+            <h3 class="default-profile"> Add Your Accomplishments..</h3>
+            }
 
         </div>
         }
         @case ('languages') {
-        <div>
+        <div class="default-sec">
             <section class="languages-container">
+                @if (currentUser?.spokenLanguages) {
                 <h2 class="section-title">Languages</h2>
-
                 <div class="language-category">
                     <h3 class="category-title">Spoken Languages</h3>
                     <ul class="language-list">
-                        <li *ngFor="let language of spokenLanguages">{{ language }}</li>
+                        <li *ngFor="let language of currentUser?.spokenLanguages">{{ language }}</li>
                     </ul>
                 </div>
-
+                }@else {
+                <h3 class="default-profile">Add Your Spoken Languages..</h3>
+                }
+                @if (currentUser?.programmingLanguages) {
                 <div class="language-category">
                     <h3 class="category-title">Programming Languages</h3>
                     <ul class="language-list">
-                        <li *ngFor="let language of programmingLanguages">{{ language }}</li>
+                        <li *ngFor="let language of currentUser?.programmingLanguages">{{ language }}</li>
                     </ul>
                 </div>
+                }@else {
+                <h3 class="default-profile">Add Your Programming Languages..</h3>
+                }
             </section>
 
         </div>
@@ -168,16 +222,22 @@
         <div>
             <section class="contact-container">
                 <div class="contact-card">
+                    @if(currentUser?.contactInfo?.email){
                     <h2 class="section-title">Contact Me</h2>
+                    }@else {
+                    <h2 class="section-title default-profile">Contact Me</h2>
+                    }
 
                     <div class="contact-details">
-                        <p>Email: <a href="mailto:{{ contactInfo.email }}">{{ contactInfo.email }}</a>
+                        <p>Email: <a href="mailto:{{ currentUser?.contactInfo?.email }} || 'buddy@gmail.com'">{{
+                                currentUser?.contactInfo?.email || "buddy@gmail.com" }}</a>
                         </p>
-                        <p>Phone: <a href="tel:{{ contactInfo.phone }}">{{ contactInfo.phone }}</a></p>
-                        <p>Location: {{ contactInfo.location }}</p>
-                        <p>LinkedIn: <a href="{{ contactInfo.linkedIn }}" target="_blank">View
+                        <p>Phone: <a href="tel:{{ currentUser?.contactInfo?.phone }}">{{ currentUser?.contactInfo?.phone
+                                }}</a></p>
+                        <p>Location: {{ currentUser?.contactInfo?.location }}</p>
+                        <p>LinkedIn: <a href="{{ currentUser?.contactInfo?.linkedIn }}" target="_blank">View
                                 Profile</a></p>
-                        <p>GitHub: <a href="{{ contactInfo.github }}" target="_blank">View
+                        <p>GitHub: <a href="{{ currentUser?.contactInfo?.github }}" target="_blank">View
                                 Repositories</a></p>
                     </div>
                 </div>
@@ -198,13 +258,22 @@
 
 <ng-template #sidenavTemplate>
     <div class="side-nav-header">
-        <img class="profile-image" [src]="'assets/images/' + 'fejin' + '.jpg'" alt="Profile Image">
+        <img class="profile-image" [src]="'assets/images/' + currentUser?.imgName + '.jpg'"
+            (error)="onImageError($event , 'defaultProfile')" alt="Profile Image">
     </div>
     <div class="side-nav-tabs-head">
-        <h2>FEJIN FM</h2>
+        @if (currentUser?.name) {
+        <h2>{{currentUser?.name }}</h2>
+        }@else {
+        <h2>Buddy</h2>
+        }
     </div>
     <div class="side-nav-role">
-        FULL STACK DEVELOPER
+        @if (currentUser?.home?.subTitle) {
+        {{currentUser?.home?.subTitle}}
+        }@else {
+        Add Your Role..
+        }
     </div>
     <div class="side-nav-tabs">
         <a [ngClass]="tabName=='home'?'nav-tabs-alive':'nav-tabs'" mat-list-item (click)="change('home')">Profile
